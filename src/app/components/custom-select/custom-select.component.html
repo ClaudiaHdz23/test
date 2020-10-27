@@ -1,0 +1,36 @@
+<ng-container *ngFor="let select of selectsInfo">
+  <select
+  [(ngModel)]="selectedValue"
+  [style]="select.attributes.style | sanity"
+  (change)="form.setValue(this.selectedValue)">
+    <option *ngFor="let option of formatValues" [ngValue]="option">{{option.formatDisplay}}</option>
+  </select>
+</ng-container>
+
+<form [formGroup]="form" (submit)="send()">
+  <div>
+    <label for="id">Id</label>
+    <input type="text" id="id" formControlName="id">
+  </div>
+  
+  <div>
+    <label for="format">Format</label>
+    <input type="text" id="format" formControlName="format">
+  </div>
+
+  <div>
+    <label for="formatDisplay">Format Display</label>
+    <input type="text" id="formatDisplay" formControlName="formatDisplay">
+  </div>
+
+  <div>
+    <label for="type">Type</label>
+    <input type="text" id="type" formControlName="type">
+  </div>
+
+  <button type="submit" [disabled]="form.get('formatDisplay').pristine">Enviar</button>
+</form>
+
+<div>
+  {{form.getRawValue() | json}}
+</div>
