@@ -1,0 +1,18 @@
+form {
+    padding: 40px 0;
+}
+
+form, div {
+    flex-direction: column;
+    display: flex;
+    place-content: flex-start space-between;
+    align-items: flex-start;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+}
